@@ -57,9 +57,10 @@ To install and run the application, follow these steps:
 2. Create a virtual environment: `python3 -m venv env`
 3. Activate the virtual environment: `source env/bin/activate`
 4. Install the requirements: `pip install -r requirements.txt`
-5. Run the migrations: `python manage.py migrate`
-6. Create a superuser: `python manage.py createsuperuser`
-7. Start the development server: `python manage.py runserver`
+5. Make the migrations: `python manage.py makemigrations`
+6. Run the migrations: `python manage.py migrate`
+7. Create a superuser: `python manage.py createsuperuser`
+8. Start the development server: `python manage.py runserver`
 
 You can now access the application by visiting `http://127.0.0.1:8000/` in your web browser.
 
