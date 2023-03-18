@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{terapist}}{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{message}}
+        </div>
+        {% endfor %}
+
+
+        <div class="card-header text-center">
+          <strong>Terapist:&emsp;{{terapist}}</strong>
+        </div>
+        <div class="card-body getScroll">
+
+          <p class="card-text">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Isim: </strong>{{terapist.name}}</li>
+            <li class="list-group-item"><strong>Soyisim: </strong>{{terapist.second_name}}</li>
+            <li class="list-group-item"><strong>No: </strong>{{get_phone}}</li>
+            <li class="list-group-item"><strong>Email: </strong>{{terapist.email}}</li>
+            <li class="list-group-item"><strong>Cinsiyet: </strong>{{terapist.gender}}</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'terapistler' %}" role="button">Geri</a>
+        &emsp;
+        <a class="btn btn-outline-warning" href="{% url 'terapist-duzenle' terapist.id %}" role="button">Güncelle</a>
+        &emsp;
+        <a class="btn btn-outline-danger" onclick = "return confirm('Emin Misiniz?');" href="{% url 'terapist-sil' terapist.id %}" role="button">Sil</a>
+        &emsp;
+        <a class="btn btn-outline-secondary" href="{% url 'terapistin-randevulari' terapist.id %}" role="button">Randevular</a>
+      </div>
+
+    </div>
+    <!-- 2 / sayfanın ikinci yarısı -->
+    <div class="col">
+      <div class="card text-left">
+        <div class="card-header text-center">
+          <strong>Danışan Sayısı: </strong>{{danisan_sayisi}}
+        </div>
+        <div class="card-body getScroll">
+          <ul class="list-group">
+            {% for danisan in danisanlar %}
+            <!-- <li class="list-group-item"><strong>Danışan: </strong> -->
+            <div class="list-group">
+              <a href="{% url 'danisanlari-goster' danisan.id %}" class = "list-group-item list-group-item-action">
+                <strong>Danışan:</strong> <u>{{danisan}}</u>
+              </a>
+            </div>
+              
+            <!-- </li> -->
+            {% endfor %}
+          </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 / sayfanın alt kısmı -->
+  <!-- <br>
+  <div class="col">
+    <div class="card text-left">
+      <div class="card-header text-center">
+        <strong>Randevular</strong>
+      </div>
+      <div class="card-body getScroll">
+
+        <p class="card-text">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Danışan</th>
+              <th scope="col">Tarih</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {% for randevu in randevular %}
+            <tr>
+              <td>
+                <a href="{% url 'randevulari-goster' randevu.id %}">
+                  <u>{{ randevu.id }}</u>
+                </a>
+              </td>
+              <td>{{ randevu.dnsId }}</td>
+              <td>{{ randevu.rndTime }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </p>
+      </div>
+    </div>
+
+  </div> -->
+</div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Randevu Id: {{randevu.id}}{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{message}}
+        </div>
+        {% endfor %}
+
+
+        <div class="card-header text-center">
+          <strong>Randevu Tarihi: &emsp;{{randevu.rndTime}}</strong>
+        </div>
+        <div class="card-body getScroll">
+
+          <p class="card-text">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Terapist : </strong>
+              <a href="{% url 'terapistleri-goster' randevu.dnsId.pskId.id %}">
+                <u>{{randevu.dnsId.pskId}}</u>
+              </a>
+            </li>
+            <li class="list-group-item">
+              <strong>Danışan : </strong>
+              <a href="{% url 'danisanlari-goster' randevu.dnsId.id %}">
+                <u>{{randevu.dnsId}}</u>
+              </a>
+            </li>
+            <li class="list-group-item"><strong>Randevu Tarihi: </strong>{{randevu.rndTime}}</li>
+            <li class="list-group-item"><strong>Geçme Durumu: </strong>{{randevu.passed_or_not}}</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'randevular' %}" role="button">Geri</a>
+        &emsp;
+        <a class="btn btn-outline-warning" href="{% url 'randevu-duzenle' randevu.id %}" role="button">Güncelle</a>
+        &emsp;
+        <a class="btn btn-outline-danger" href="{% url 'randevu-sil' randevu.id %}" role="button">Sil</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}

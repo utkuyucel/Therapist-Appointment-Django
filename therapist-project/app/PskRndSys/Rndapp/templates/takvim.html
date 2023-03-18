@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Takvim{% endblock%}
+
+{% block content %}
+<script src = "https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Pazartesi</th>
+      <th scope="col">Salı</th>
+      <th scope="col">Çarşamba</th>
+      <th scope="col">Perşembe</th>
+      <th scope="col">Cuma</th>
+      <th scope="col">Cumartesi</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in pzt %}
+    <tr>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+
+    {% for i in sali %}
+    <tr>
+        <td></td>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+
+    {% for i in cars %}
+    <tr>
+      <td></td>
+      <td></td>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+
+    {% for i in pers %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    
+    {% for i in cuma %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    
+    {% for i in cts %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a href="{% url 'randevulari-goster' i.id %}">{{i.dnsId.pskId}}-{{i.dnsId}}-{{i.rndTime.time}}</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Randevu Ekle{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        <div class="card-header text-center">
+          <strong>Randevu Ekleme Ekranı</strong>
+        </div>
+        <div class="card-body getScroll">
+          <p class="card-text">
+            {% if submitted %}
+
+            {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{message}}
+          </div>
+          {% endfor %}
+
+          {% else %}
+
+          <form action="" method=POST>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" name="btn" value="Kaydet" class="btn btn-outline-primary">
+          </form>
+
+          {% endif %}
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'randevular' %}" role="button">Geri</a>
+        &emsp;
+        <!-- <a class="btn btn-outline-primary" href="{% url 'danisanlar' %}" role="button">Kaydet</a> -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}

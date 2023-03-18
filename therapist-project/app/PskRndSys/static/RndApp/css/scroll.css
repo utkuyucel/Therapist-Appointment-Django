@@ -1,0 +1,5 @@
+.getScroll {
+  height:540px;
+  overflow-y: scroll;
+}
+/* Listeyi scrollamamızı sağlıyor */

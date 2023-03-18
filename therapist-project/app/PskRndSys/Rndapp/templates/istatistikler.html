@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Istatistikler{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{message}}
+        </div>
+        {% endfor %}
+
+
+        <div class="card-header text-center">
+          <strong>Danışan: &emsp;{{danisan}}</strong>
+        </div>
+        <div class="card-body getScroll">
+
+          <p class="card-text">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Geçmiş Randevu Sayısı:</strong> {{randevu_sayisi}}</li>
+            <li class="list-group-item"><strong>Toplam Ödenen Ücret:</strong> {{ucret}} TL</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'danisanlari-goster' danisan.id %}" role="button">Geri</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

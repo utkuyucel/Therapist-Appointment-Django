@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{danisan}}{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{message}}
+        </div>
+        {% endfor %}
+
+
+        <div class="card-header text-center">
+          <strong>Danışan: &emsp;{{danisan}}</strong>
+        </div>
+        <div class="card-body getScroll">
+
+          <p class="card-text">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Isim: </strong>{{danisan.name}}</li>
+            <li class="list-group-item"><strong>Soyisim: </strong>{{danisan.second_name}}</li>
+            <li class="list-group-item"><strong>No: </strong>{{get_phone}}</li>
+            <li class="list-group-item"><strong>Email: </strong>{{danisan.email}}</li>
+            <li class="list-group-item"><strong>Yaş: </strong>{{danisan_yas}}</li>
+            <li class="list-group-item"><strong>Ücret: </strong>{{danisan.price}}</li>
+            <li class="list-group-item"><strong>Cinsiyet: </strong>{{danisan.gender}}</li>
+            <li class="list-group-item">
+              <strong>Terapist: </strong>
+              <u><a href="{% url 'terapistleri-goster' danisan.pskId.id %}">{{danisan.pskId}}</a></u>
+            </li>
+          </ul>
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'danisanlar' %}" role="button">Geri</a>
+        &emsp;
+        <a class="btn btn-outline-warning" href="{% url 'danisan-duzenle' danisan.id %}" role="button">Güncelle</a>
+        &emsp;
+        <a class="btn btn-outline-danger" onclick = "return confirm('Emin Misiniz?');" href="{% url 'danisan-sil' danisan.id %}" role="button">Sil</a>
+        &emsp;
+        <a class="btn btn-outline-secondary" href="{% url 'istatistikler' danisan.id %}" role="button">İstatistikler</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}

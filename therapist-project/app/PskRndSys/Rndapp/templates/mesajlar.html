@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Mesajlar{% endblock%}
+
+{% block content %}
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+<div class="card text-center">
+
+  <div class="card-header">
+
+  </div>
+  <div class="card-body getScroll">
+
+    <p class="card-text">
+      {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{message}}
+    </div>
+    {% endfor %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Yarın Randevusu Olan Danışan : {{danisan_adet}}</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Mesaj Gönder</button>
+    </form>
+    <br>
+    <p>Gönderilecek Mesaj: 
+      <br>
+      "Randevu Bilgilendirmesi - Imago,
+      <br>
+      Merhabalar Sayın XXX. Yarın Saat XX:YY'de randevunuz bulunmaktadır.
+      <br>
+      XXX Psikoterapi Merkezi."
+    </p>
+    </p>
+  </div>
+  
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Giris Yap</title>
+    
+  <!-- Gerekli static ögelerin link ile verilmesi -->
+  <link rel="stylesheet" href="{% static 'RndApp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'RndApp/css/style.css' %}">
+  <link rel="icon" href="{% static 'RndApp/img/favicon.ico' %}">
+  <script src = "{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+  
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Login card'ı -->
+    <div class="card card-login mx-auto text-center bg-dark">
+            <!-- Login successful / login failed mesajları-->
+            <!-- Mesajlar statik bir şekilde gözüküyor. Eğer mesaj var ise, message tag'ine göre bastırılıyor. -->
+            {% if messages %}
+
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+                    
+
+            {% endif %}
+        <div class="card-header mx-auto bg-dark">
+            <span> <img src="{% static 'RndApp/img/o.png' %}" class="w-75" alt="Logo"> </span><br/>
+        </div>
+        <!-- Card'ın body kısmı. / csrf oken, django'nun CSRF saldırılarına karşı oluşturduğu methoddur. -->
+        <!-- Form action'u, login methoduna ayarlandı. Yani girilen veriler login edilecek -->
+        <!-- input id'ler ile de forms.py dosyası ile bağlamış oluyoruz  -->
+        <div class="card-body">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+
+                <div class="input-group form-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input id = "username" type="text" name="username" class="form-control" placeholder="Kullanıcı Adı" maxlength="16" required>
+                </div>
+
+                <div class="input-group form-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input id = "password" type="password" name="password" class="form-control" placeholder="Şifre" maxlength="64" required>
+                    <button type ="button" id="toggle">Göster</button>
+                    <!-- Şifre göster/gizle butonunun js dosyasına yönlendirilmesi -->
+                    <script src = "{% static 'RndApp/js/hidden.js' %}"></script>
+                </div>
+                <div class="row justify-content-center">
+                    <input type="submit" name="btn" value="Giriş" class="btn btn-outline-danger float-right login_btn">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

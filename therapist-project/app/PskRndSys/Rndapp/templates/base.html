@@ -1,0 +1,74 @@
+{% load static %}
+<!-- Tüm sayfalarda kullanılacak olan sidebar ve arkaplan olan base.html'i kodluyoruz -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- dinamik title -->
+  <title>
+    {% block title%}
+    {% endblock %}
+  </title>
+
+  <link rel="stylesheet" href="{% static 'RndApp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'RndApp/css/sidebar.css' %}">
+  <link rel="icon" href="{% static 'RndApp/img/favicon.ico' %}">
+
+</head>
+
+<body>
+  <script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+  <div class="wrapper">
+
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <a href="{% url 'home' %}">Kullanıcı: {{user}}</a>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+          <a href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li>
+          <a href="{% url 'danisanlar' %}">Danışanlar</a>
+        </li>
+        <li>
+          <a href="{% url 'terapistler' %}">Terapistler</a>
+        </li>
+        <li>
+          <a href="{% url 'randevular' %}">Randevular</a>
+        </li>
+        <li>
+          <a href="{% url 'mesajlar' %}">Mesajlar</a>
+        </li>
+        <li>
+          <a href="{% url 'takvim' %}">Takvim</a>
+        </li>
+        <!-- <li>
+          <a href="">İstatistikler</a>
+        </li> -->
+        <li>
+          <a href="{% url 'logout' %}">Çıkış</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!--  Content  -->
+    <!--  Extend edilecek olan template'lerin burayı doldurması yeterli. block yapısı bu şekilde kullanılıyor.-->
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+
+</body>
+
+</html>

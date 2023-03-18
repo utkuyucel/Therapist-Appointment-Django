@@ -1,0 +1,164 @@
+<!-- Base.html'in statik kısımlarını (Sidebar) buraya yüklüyoruz -->
+<!-- Django, static yapısı sayesinde url'yi belirtmeye gerek kalmadan static ekleyebiliyoruz. Bu yüzden load static diyoruz -->
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Dinamik sayfa başlığı -->
+{% block title %}Anasayfa{% endblock %}
+
+<!-- Dinamik sayfa content'i -->
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<div class="containter">
+  <!-- Sayfayı ortadan ikiye bölen div. (Bugünkü ve yarınki seanslar) -->
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-center">
+        <!-- total değişkeni bastırılıyor. Sonrasında yenile butonu konuluyor -->
+        <div class="card-header">
+          <button onClick="window.location.reload();">Yenile</button>
+        </div>
+        <!-- Bugünkü seanslar değişkenini bastırıyor -->
+        <div class="card-body getScroll">
+          <h5 class="card-title">Bugünkü Randevular ({{number_of_session_today}})</h5>
+          <p class="card-text">
+
+            <!-- Table kısmı / Kolon isimleri -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Terapist</th>
+                <th scope="col">Danışan</th>
+                <th scope="col">Saat</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Bugünkü randevular, for döngüsü şeklinde bir table element olarak bastırılıyor. -->
+              {% for day in day_select_today %}
+
+              <tr>
+                <td>
+                  <u><a href="{% url 'randevulari-goster' day.id %}">{{ day.id }}</a></u>
+                </td>
+                <td>{{ day.dnsId.pskId }}</td>
+                <td>{{ day.dnsId}}</td>
+                <td>{{ day.rndTime.time }}</td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+          </p>
+        </div>
+      </div>
+      <!-- Mesaj gönder butonları -->
+      <!-- <div class="col text-center">
+        <br>
+        <button type="button" class="btn btn-warning">Mesaj gönder</button>
+      </div> -->
+
+
+    </div>
+
+    <!-- 2 / Sayfanın ikinci yarısı -->
+    <div class="col">
+      <div class="card text-center">
+        <!-- Yarınki seanslar card'ının başlığında dijital bir saat var. aşağıdaki div bu saatin kodlarını bulunduruyor-->
+        <div class="card-header">
+          <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+          <!-- rndapp/js/clock.js içerisinde kodları bulunuyor saatin. -->
+          <script src="{% static 'RndApp/js/clock.js' %}"></script>
+        </div>
+        <div class="card-body getScroll">
+          <h5 class="card-title">Yarınki Randevular ({{number_of_session_tomorrow}})</h5>
+          <p class="card-text">
+
+            <!-- Table kısmı / Kolon isimleri -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Terapist</th>
+                <th scope="col">Danışan</th>
+                <th scope="col">Saat</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Yarınki randevular, for döngüsü şeklinde bir table element olarak bastırılıyor. -->
+              {% for day in day_select_tom %}
+
+              <tr>
+                <td>
+                  <u><a href="{% url 'randevulari-goster' day.id %}">{{ day.id }}</a></u>
+                </td>
+                <td>{{ day.dnsId.pskId }}</td>
+                <td>{{ day.dnsId}}</td>
+                <td>{{ day.rndTime.time }}</td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <!-- 3 / Sayfanın ikinci yarısı -->
+  <!-- <div class="col">
+    <div class="card text-center">
+      
+      <div class="card-header">
+      </div>
+      <div class="card-body getScroll">
+        <h5 class="card-title">
+          <form method="get">
+            {% csrf_token %}
+            {{myFilter.form}}
+            <br>
+            <button class="btn btn-primary" type="submit">Ara</button>
+          </form>
+        </h5>
+        <p class="card-text">
+
+      
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Danışan</th>
+              <th scope="col">Saat</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            
+            {% for randevu in filtered_rnd %}
+
+            <tr>
+              <td>
+                <u><a href="{% url 'randevulari-goster' randevu.id %}">{{ randevu.id }}</a></u>
+              </td>
+              <td>{{ randevu.dnsId }}</td>
+              <td>{{ randevu.rndTime }}</td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+        </p>
+      </div>
+    </div>
+  </div> -->
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Terapistler{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+<script src="{% static 'RndApp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'RndApp/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'RndApp/js/sorting.js' %}"></script>
+
+<div class="containter">
+  <!-- Sayfayı ortadan ikiye bölen div. (Bugünkü ve yarınki seanslar) -->
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-center">
+        {% if messages %}
+
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{message}}
+        </div>
+        {% endfor %}
+
+        {% endif %}
+        <div class="card-header">
+          Toplam Terapist: {{total}} &emsp;&emsp;&emsp;&emsp; <button
+            onClick="window.location.reload();">Yenile</button>
+        </div>
+        <div class="card-body getScroll">
+          <!-- <h5 class="card-title">Bugünkü Seanslar ({{number_of_session_today}})</h5> -->
+          <p class="card-text">
+            <!-- Table kısmı / Kolon isimleri -->
+          <table id = "sortable-table" class="table">
+            <thead>
+              <tr>
+                <th onclick = "sortTable(0)" scope="col">Id</th>
+                <th onclick = "sortTable(1)" scope="col">İsim</th>
+                <th onclick = "sortTable(2)" scope="col">Soyisim</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Aktivite</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Danışanlar bastırılıyor  -->
+              {% for terapist in terapist_list %}
+
+              <tr>
+                <td>{{ terapist.id }}</td>
+                <td>{{ terapist.name }}</td>
+                <td>{{ terapist.second_name }}</td>
+                <td>{{ terapist.phone }}</td>
+                <td>
+                  <a href="{% url 'terapistleri-goster' terapist.id %}"
+                    class="btn btn-outline-warning btn-sm">Düzenle</a>
+                </td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+          </p>
+        </div>
+      </div>
+
+      <!-- Mesaj gönder butonları -->
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-success" href="{% url 'terapist-ekle' %}" role="button">Ekle</a>
+        <!-- &emsp;&emsp;
+        <button type="button" class="btn btn-warning">Düzenle</button> -->
+      </div>
+
+      <!-- Mesaj gönder butonları -->
+      <!-- <div class = "col text-left">
+        <br>
+        
+      </div> -->
+    </div>
+  </div>
+
+</div>
+{% endblock %}

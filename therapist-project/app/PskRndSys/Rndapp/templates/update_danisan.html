@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Danisan Düzenle{% endblock%}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="{% static 'RndApp/css/scroll.css' %}">
+
+<div class="containter">
+
+  <div class="row">
+
+    <!-- 1 / sayfanın ilk yarısı -->
+    <div class="col">
+      <div class="card text-left">
+
+        <div class="card-header text-center">
+          <strong>Danışan Düzenleme Ekranı</strong>
+        </div>
+        <div class="card-body getScroll">
+          <p class="card-text">
+
+          <form action="" method=POST>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" name="btn" value="Kaydet" class="btn btn-outline-primary">
+          </form>
+
+
+          </p>
+        </div>
+      </div>
+      <div class="col text-left">
+        <br>
+        <a class="btn btn-outline-primary" href="{% url 'danisanlari-goster' danisan.id %}" role="button">Geri</a>
+        &emsp;
+        <!-- <a class="btn btn-outline-primary" href="{% url 'danisanlar' %}" role="button">Kaydet</a> -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}
