@@ -61,7 +61,7 @@ To install and run the application, follow these steps:
 6. Create a superuser: `python manage.py createsuperuser`
 7. Start the development server: `python manage.py runserver`
 
-You can now access the application by visiting `http://localhost:8000` in your web browser.
+You can now access the application by visiting `http://127.0.0.1:8000/` in your web browser.
 
 ## Configuration
 
