@@ -1,0 +1,143 @@
+[33mcommit e79a3e459f5a58f3490de9f8b238232ac34297a7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Mon Jun 24 16:32:19 2024 +0300
+
+    Bump django from 3.2.12 to 3.2.25 (#4)
+    
+    Bumps [django](https://github.com/django/django) from 3.2.12 to 3.2.25.
+    - [Commits](https://github.com/django/django/compare/3.2.12...3.2.25)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: django
+      dependency-type: direct:production
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit b6022dd54964c561522aa2685bb62d083723b040[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Mon Jun 24 10:11:01 2024 +0300
+
+    Bump certifi from 2021.10.8 to 2023.7.22 (#5)
+    
+    Bumps [certifi](https://github.com/certifi/python-certifi) from 2021.10.8 to 2023.7.22.
+    - [Commits](https://github.com/certifi/python-certifi/compare/2021.10.08...2023.07.22)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: certifi
+      dependency-type: direct:production
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 9febb414478514d3b5da485ddd52bb0e7c41eacf[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Mon Jun 24 10:07:54 2024 +0300
+
+    Bump python-jwt from 3.3.2 to 3.3.4 (#3)
+    
+    Bumps [python-jwt](https://github.com/davedoesdev/python-jwt) from 3.3.2 to 3.3.4.
+    - [Commits](https://github.com/davedoesdev/python-jwt/commits)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: python-jwt
+      dependency-type: direct:production
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 356ad9af0bebecd7249b093e8ab476fd27508380[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Fri Jun 21 20:00:28 2024 +0300
+
+    Bump ws and socket.io in /therapist-project/docs/bootstrap-4.6.1 (#2)
+    
+    Bumps [ws](https://github.com/websockets/ws) and [socket.io](https://github.com/socketio/socket.io). These dependencies needed to be updated together.
+    
+    Updates `ws` from 8.2.3 to 8.17.1
+    - [Release notes](https://github.com/websockets/ws/releases)
+    - [Commits](https://github.com/websockets/ws/compare/8.2.3...8.17.1)
+    
+    Updates `socket.io` from 4.3.1 to 4.7.5
+    - [Release notes](https://github.com/socketio/socket.io/releases)
+    - [Changelog](https://github.com/socketio/socket.io/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/socketio/socket.io/compare/4.3.1...4.7.5)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: ws
+      dependency-type: indirect
+    - dependency-name: socket.io
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 63da58bf5058b111bc867a29b7d4977d31ecb6a4[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Jun 5 01:12:37 2024 +0300
+
+    Bump ip from 1.1.5 to 2.0.1 in /therapist-project/docs/bootstrap-4.6.1 (#1)
+    
+    Bumps [ip](https://github.com/indutny/node-ip) from 1.1.5 to 2.0.1.
+    - [Commits](https://github.com/indutny/node-ip/compare/v1.1.5...v2.0.1)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: ip
+      dependency-type: direct:development
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 934aafb3e8b67f79bd17a15f0f6f0bf86d26b86e[m
+Author: Utku Yücel <40201124+utkuyucel@users.noreply.github.com>
+Date:   Sat Mar 18 17:34:48 2023 +0300
+
+    Update README.md
+
+[33mcommit 2c1f87dc038bf13b668443a285686351684931cd[m
+Author: Utku Yücel <40201124+utkuyucel@users.noreply.github.com>
+Date:   Sat Mar 18 17:32:12 2023 +0300
+
+    Update README.md
+
+[33mcommit f4d4bf67cda64d61c6b70a7f8776bd63a86ca0bd[m
+Author: Utku Yücel <40201124+utkuyucel@users.noreply.github.com>
+Date:   Sat Mar 18 17:25:25 2023 +0300
+
+    .
+    
+    .
+
+[33mcommit 6c444621ec07d24c814247a008bb1374f12a48b6[m
+Author: Utku Yücel <utkuyucel35@gmail.com>
+Date:   Sat Mar 18 17:25:09 2023 +0300
+
+    .
+    
+    .
+
+[33mcommit 988b5ab6d6e46f2f6a4605f7ca35456e7216e992[m
+Author: Utku Yücel <utkuyucel35@gmail.com>
+Date:   Sat Mar 18 17:02:55 2023 +0300
+
+    .
+    
+    .
+
+[33mcommit a03e05ce419db8ed22bd7aac3fe2e1557c727daa[m
+Author: Utku Yücel <utkuyucel35@gmail.com>
+Date:   Sat Mar 18 17:02:11 2023 +0300
+
+    Initial commit
+
+[Soniya Harwani][https://github.com/Soniya-c/Therapist-Appointment-Django.git]
